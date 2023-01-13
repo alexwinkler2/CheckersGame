@@ -23,63 +23,45 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GUIDriver extends Application {
-	   
-public static void main(String[] args) {
-
-launch(args);
-
-
-
-       
-    }
-   //hello
-    @Override
-    public void start(Stage stage) throws Exception {
-    FileInputStream inputstream = new FileInputStream("checker_board.PNG");
-    Image image = new Image(inputstream);
-    ImageView imageView = new ImageView(image);
-    Group root = new Group ();
-    Group root2 = new Group();
-    root.getChildren().addAll(imageView);
-    Circle checker1 = new Circle();
-    checker1.setCenterX(25);
-    checker1.setCenterY(25);
-    checker1.setRadius(20);
-    root.getChildren().addAll(checker1);
     
-    //Start Of Squares
-    int count = 0;
-        for (int i = 0; i < 8; i++) {
-        count++;
-        for (int j = 0; j < 8; j++) {
-        Circle c = new Circle();
-        c.setCenterX(200.0f);
-        c.setCenterY(100.0f);
-        c.setRadius(50.0f);
-        c.setFill(Color.BLACK);
-        if (count % 2 != 0) {
-        
-        }
-        else {
-        
-        }
-        if(i > 0 && i <3) {
-        	
-        }
-        count++;
-        }
-        }
-        Scene scene = new Scene(root,400,400);
-        
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+	 @Override
+	    public void start(Stage stage) throws Exception {
+	  
+	    //Start Of Squares
+		 GridPane board = new GridPane();
+	    	
+	    	//Start Of Squares
+	    	int count = 0; 
+	        for (int i = 0; i < 8; i++) {
+	        	count++;
+	        	for (int j = 0; j < 8; j++) {
+	        		Button b = new Button("");
+	        		b.setPrefSize(50, 50);
+	        		if (count % 2 != 0) {
+	        			b.setStyle("-fx-background-color: green;");
+
+	        			
+	        		}
+	        		else {
+	        			b.setStyle("-fx-background-colour: sand");
+	        			
+	        		}
+	        		board.add(b,j, i);
+	        		count++;
+	        	}
+	        }
+	        Scene scene = new Scene(board);
+
+	        
+	        stage.setScene(scene);
+	        stage.setResizable(false);
+	        stage.show();
 
 
 
 
-   
-   
+	   
+	   
 
-}
-}
+	}
+	}
