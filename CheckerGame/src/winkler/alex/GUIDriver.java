@@ -35,7 +35,7 @@ launch(args);
    //hello
     @Override
     public void start(Stage stage) throws Exception {
-    FileInputStream inputstream = new FileInputStream("C:\\Users\\334492832\\Pictures\\checker_board.PNG");
+    FileInputStream inputstream = new FileInputStream("checker_board.PNG");
     Image image = new Image(inputstream);
     ImageView imageView = new ImageView(image);
     Group root = new Group ();
