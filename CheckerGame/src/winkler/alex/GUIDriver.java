@@ -39,8 +39,14 @@ launch(args);
     Image image = new Image(inputstream);
     ImageView imageView = new ImageView(image);
     Group root = new Group ();
+    Group root2 = new Group();
     root.getChildren().addAll(imageView);
-    GridPane checkers= new GridPane();
+    Circle checker1 = new Circle();
+    checker1.setCenterX(25);
+    checker1.setCenterY(25);
+    checker1.setRadius(20);
+    root.getChildren().addAll(checker1);
+    
     //Start Of Squares
     int count = 0;
         for (int i = 0; i < 8; i++) {
