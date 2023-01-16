@@ -21,25 +21,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Checker {
-	public Checker() {
-		Group root = new Group();
-		int countVertical = 0;
-		int countHorizontal = 0;
-		int count = 0;
-		for(int i=0; i<8; i++) {
-			count++;
-			countVertical+=1;
-			countHorizontal+=1;
-			for(int j=0; j<8; j++) {
-				Circle checker = new Circle();
-				checker.setCenterX(countVertical);
-				checker.setCenterY(countHorizontal);
-				checker.setRadius(20);
-				if(count %2 !=0) {
-					root.getChildren().addAll(checker);
-				}
-			}
-		}
-	}
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+public class Checker extends Circle {
+    public Checker(Color color) {
+        this.setRadius(20);
+        this.setFill(color);
+    }
 }
