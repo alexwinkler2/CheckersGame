@@ -1,11 +1,16 @@
 package winkler.alex;
 
 
+
 import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+
 
 public class GUIDriver extends Application {
     public static void main(String[] args) {
@@ -15,6 +20,7 @@ public class GUIDriver extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         GridPane board = new GridPane();
+        
         int count = 0; 
         for (int i = 0; i < 8; i++) {
             count++;
@@ -39,9 +45,19 @@ public class GUIDriver extends Application {
                     }
                 });
                 board.add(b,j, i);
+                Checker redChecker = new Checker(Color.RED);
+                Checker blackChecker = new Checker(Color.BLACK);
+                board.add(redChecker, 0, 0);
+                board.add(blackChecker, 1, 1);
                 count++;
             }
         }
+          
+        
+        
+        
+		
+        
         Scene scene = new Scene(board);
         stage.setScene(scene);
         stage.show();
