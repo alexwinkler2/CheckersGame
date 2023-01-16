@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class Checker extends Circle {
 	public Checker(Color color) {
-		this.setRadius(20);
+		this.setRadius(25);
 		this.setFill(color);
 	}
 	
