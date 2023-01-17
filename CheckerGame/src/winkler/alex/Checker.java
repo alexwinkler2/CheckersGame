@@ -21,10 +21,21 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+<<<<<<< HEAD
 public class Checker extends Circle {
 	public Checker(Color color) {
 		this.setRadius(25);
 		this.setFill(color);
 	}
 	
+=======
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+public class Checker extends Circle {
+    public Checker(Color color) {
+        this.setRadius(20);
+        this.setFill(color);
+    }
+>>>>>>> branch 'main' of https://github.com/alexwinkler2/CheckersGame.git
 }

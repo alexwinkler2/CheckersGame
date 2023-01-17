@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+
 import javafx.stage.Stage;
 
 
@@ -52,11 +53,13 @@ public class GUIDriver extends Application {
             
         
                 board.add(b,j, i);
-               
-                
-               
-                
-                count++;
+
+                Checker redChecker = new Checker(Color.RED);
+                Checker blackChecker = new Checker(Color.BLACK);
+                board.add(redChecker,0,0);
+                board.add(blackChecker,1,1);
+
+
             }
         }
        count = 0;
@@ -94,6 +97,8 @@ public class GUIDriver extends Application {
         Scene scene = new Scene(board);
         stage.setScene(scene);
         stage.show();
+        
+        
     }
 }
 
