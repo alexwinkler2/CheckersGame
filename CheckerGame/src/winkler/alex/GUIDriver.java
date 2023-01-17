@@ -61,27 +61,41 @@ public class GUIDriver extends Application {
         }
        count = 0;
         for(int j = 0;j<8;j++) {
-        	count++;
+        	
           for(int i = 0;i < 8;i++) {
-        	  if(i%2 == 0 && j%2 ==0) {
+        	  if(i%2 == 0 && j%2 ==0 && j < 4) {
         	  	Checker redChecker = new Checker(Color.RED);
         	  	board.add(redChecker, i, j);
         	  }
           }
           for(int i = 0;i < 8;i++) {
-        	  if(i%2 != 0 && j%2 !=0) {
-        	  	Checker blackChecker = new Checker(Color.RED);
-        	  	board.add(blackChecker, i, j);
+        	  if(i%2 != 0 && j%2 !=0 && i==1) {
+        	  	Checker redChecker = new Checker(Color.RED);
+        	  	board.add(redChecker, j, i);
         	  }
           }
-        
         }
-		
+        for(int j = 0;j<8;j++) {
+        	
+            for(int i = 0;i < 8;i++) {
+          	  if(i%2 == 0 && j%2 ==0 && j > 4) {
+          	  	Checker redChecker = new Checker(Color.BLACK);
+          	  	board.add(redChecker, i, j);
+          	  }
+            }
+            for(int i = 0;i < 8;i++) {
+          	  if(i%2 != 0 && j%2 !=0 && i>4 ) {
+          	  	Checker redChecker = new Checker(Color.BLACK);
+          	  	board.add(redChecker, j, i);
+          	  }
+            }
+          }
         
         Scene scene = new Scene(board);
         stage.setScene(scene);
         stage.show();
     }
 }
+
 
 
