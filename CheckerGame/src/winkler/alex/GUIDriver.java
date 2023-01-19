@@ -20,6 +20,8 @@ public class GUIDriver extends Application {
         launch(args);
     }
 
+    Board grid = new Board(8,8);
+    
     @Override
     public void start(Stage stage) throws Exception {
     	ArrayList <Checker> redCheckerTracker = new ArrayList<Checker>();
@@ -30,7 +32,7 @@ public class GUIDriver extends Application {
         for (int i = 0; i < 8; i++) {
             count++;
             for (int j = 0; j < 8; j++) {
-                Button b = new Button("");
+                NewButton b = new NewButton(i,j);
                 b.setPrefSize(50, 50);
                 buttonTracker.add(b);
                 if (count % 2 != 0) {
@@ -39,7 +41,13 @@ public class GUIDriver extends Application {
                     b.setStyle("-fx-background-color: white;");
                
                 }
-               
+                
+                
+        		b.setOnAction( e -> {
+        			System.out.println(e.getSource().toString());
+        			
+        		});
+               grid.getState(7, 7);
              
                
                 /**if (b.getStyle().equals("-fx-background-color: green;")) {
@@ -69,16 +77,26 @@ public class GUIDriver extends Application {
         	count++;
           for(int i = 0;i < 8;i++) {
         	  if(i%2 == 0 && j%2 ==0 && j < 4) {
-        	  	Checker redChecker = new Checker(Color.RED);
+        	  	Checker redChecker = new Checker(CellState.P1,j,i);
+        	  	
+        	  	// Add to grid pane
         	  	board.add(redChecker, i, j);
+        	  	
+        	  	// Add to Arraylist for tracking purposes
         	  	redCheckerTracker.add(redChecker);
+        	  	
+        	  	// Add to grid for location tracking
+        	  	grid.setChecker(redChecker);
+        	  	
+        	  	
         	  }
           }
           for(int i = 0;i < 8;i++) {
         	  if(i%2 != 0 && j%2 !=0 && i==1) {
-        	  	Checker redChecker = new Checker(Color.RED);
+        	  	Checker redChecker = new Checker(CellState.P1,j,i);
         	  	board.add(redChecker, j, i);
         	  	redCheckerTracker.add(redChecker);
+        	  	grid.setChecker(redChecker);
         	  }
           }
         }
@@ -86,31 +104,25 @@ public class GUIDriver extends Application {
         	
             for(int i = 0;i < 8;i++) {
           	  if(i%2 == 0 && j%2 ==0 && j > 4) {
-          	  	Checker blackChecker = new Checker(Color.BLACK);
+          	  	Checker blackChecker = new Checker(CellState.P2,j,i);
           	  	board.add(blackChecker, i, j);
           	  	blackCheckerTracker.add(blackChecker);
+          	  grid.setChecker(blackChecker);
           	  }
             }
             for(int i = 0;i < 8;i++) {
           	  if(i%2 != 0 && j%2 !=0 && i>4 ) {
-          	  	Checker blackChecker = new Checker(Color.BLACK);
+          	  	Checker blackChecker = new Checker(CellState.P2,j,i);
           	  	board.add(blackChecker, j, i);
           	  	blackCheckerTracker.add(blackChecker);
+          	  grid.setChecker(blackChecker);
           	  }
             }
           }
         
         
-        
-      
-        buttonTracker.get(1).setOnMousePressed(e -> {});
-        
-        buttonTracker.get(0).setOnMouseReleased(e -> {
-        	
-        });
-        
-        blackCheckerTracker.get(1).setCenterX(200);
-        blackCheckerTracker.get(1).setCenterY(200);
+       
+       
         
         Scene scene = new Scene(board);
         stage.setScene(scene);
