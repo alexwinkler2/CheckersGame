@@ -20,14 +20,14 @@ public class GUIDriver extends Application {
         launch(args);
     }
 
-    Board grid = new Board(8,8);
+    Board board = new Board(8,8);
     
     @Override
     public void start(Stage stage) throws Exception {
     	ArrayList <Checker> redCheckerTracker = new ArrayList<Checker>();
     	ArrayList <Checker> blackCheckerTracker = new ArrayList<Checker>();
     	ArrayList<Button> buttonTracker = new ArrayList<Button>();
-    	GridPane board = new GridPane();
+    	GridPane grid = new GridPane();
         int count = 0;
         for (int i = 0; i < 8; i++) {
             count++;
@@ -45,9 +45,11 @@ public class GUIDriver extends Application {
                 
         		b.setOnAction( e -> {
         			System.out.println(e.getSource().toString());
-        			
+        			int row = ((NewButton) e.getSource()).getRow();
+        			int col = ((NewButton) e.getSource()).getCol();
+        			System.out.println(board.getState(row,col));
         		});
-               grid.getState(7, 7);
+               
              
                
                 /**if (b.getStyle().equals("-fx-background-color: green;")) {
@@ -63,7 +65,7 @@ public class GUIDriver extends Application {
                     }
                 });*/
                 
-                board.add(b,j, i);
+                grid.add(b,j, i);
                count++;
             }
         }
@@ -76,46 +78,48 @@ public class GUIDriver extends Application {
         for(int j = 0;j<8;j++) {
         	count++;
           for(int i = 0;i < 8;i++) {
-        	  if(i%2 == 0 && j%2 ==0 && j < 4) {
-        	  	Checker redChecker = new Checker(CellState.P1,j,i);
+        	  if(i%2 == 0 && j%2 ==0 && i < 4) {
+        	  	Checker redChecker = new Checker(CellState.P1,i,j);
+        	  	
+        	 // Add to grid for location tracking
+        	  	board.setChecker(redChecker);
         	  	
         	  	// Add to grid pane
-        	  	board.add(redChecker, i, j);
+        	  	grid.add(redChecker, j, i);
         	  	
         	  	// Add to Arraylist for tracking purposes
         	  	redCheckerTracker.add(redChecker);
         	  	
-        	  	// Add to grid for location tracking
-        	  	grid.setChecker(redChecker);
+        	  	
         	  	
         	  	
         	  }
           }
           for(int i = 0;i < 8;i++) {
         	  if(i%2 != 0 && j%2 !=0 && i==1) {
-        	  	Checker redChecker = new Checker(CellState.P1,j,i);
-        	  	board.add(redChecker, j, i);
+        	  	Checker redChecker = new Checker(CellState.P1,i,j);
+        	  	grid.add(redChecker, j, i);
         	  	redCheckerTracker.add(redChecker);
-        	  	grid.setChecker(redChecker);
+        	  	board.setChecker(redChecker);
         	  }
           }
         }
         for(int j = 0;j<8;j++) {
         	
             for(int i = 0;i < 8;i++) {
-          	  if(i%2 == 0 && j%2 ==0 && j > 4) {
-          	  	Checker blackChecker = new Checker(CellState.P2,j,i);
-          	  	board.add(blackChecker, i, j);
+          	  if(i%2 == 0 && j%2 ==0 && i > 4) {
+          	  	Checker blackChecker = new Checker(CellState.P2,i,j);
+          	  	grid.add(blackChecker, j, i);
           	  	blackCheckerTracker.add(blackChecker);
-          	  grid.setChecker(blackChecker);
+          	  board.setChecker(blackChecker);
           	  }
             }
             for(int i = 0;i < 8;i++) {
           	  if(i%2 != 0 && j%2 !=0 && i>4 ) {
-          	  	Checker blackChecker = new Checker(CellState.P2,j,i);
-          	  	board.add(blackChecker, j, i);
+          	  	Checker blackChecker = new Checker(CellState.P2,i,j);
+          	  	grid.add(blackChecker, j, i);
           	  	blackCheckerTracker.add(blackChecker);
-          	  grid.setChecker(blackChecker);
+          	  board.setChecker(blackChecker);
           	  }
             }
           }
@@ -124,7 +128,7 @@ public class GUIDriver extends Application {
        
        
         
-        Scene scene = new Scene(board);
+        Scene scene = new Scene(grid);
         stage.setScene(scene);
         stage.show();
         

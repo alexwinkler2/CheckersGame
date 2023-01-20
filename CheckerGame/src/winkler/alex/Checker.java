@@ -24,8 +24,8 @@ public class Checker extends Circle {
         }
     }
     public CellState getState(Checker c) {
-    	System.out.println(player);
     	return player;
+    	
     }
     public int getRow(Checker c) {
     	return c.row;
