@@ -55,6 +55,19 @@ public class Board {
 		
 		return board[row][col].getState();
 	}
+	
+	public Checker getChecker(int row, int col) {
+		if(board[row][col].getState()==CellState.EMPTY) {
+			return null;
+		}
+		Checker newChecker = new Checker(board[row][col].getState(), row, col);
+		return newChecker;
+		
+	}
+	
+	public void setState(int row, int col,CellState player) {
+		board[row][col].setState(player);
+	}
 
 	public void setChecker(Checker c) {
 		if (c.getState(c) == CellState.P1) {
@@ -68,6 +81,8 @@ public class Board {
 		}
 
 	}
+	
+	
 
 	/**
 	 * Check if a proposed location is valid.

@@ -9,6 +9,8 @@ package winkler.alex;
 
 public class Cell {
 	private CellState state;
+	private Checker checker;
+	private boolean hasChecker;
 
 	/**
 	 * Constructor with known state.
@@ -17,6 +19,7 @@ public class Cell {
 	 */
 	public Cell(CellState cs) {
 		state = cs;
+		hasChecker = false;
 	}
 
 	/**
@@ -24,6 +27,7 @@ public class Cell {
 	 */
 	public Cell() {
 		state = CellState.EMPTY;
+		hasChecker = false;
 	}
 
 	/**

@@ -33,4 +33,10 @@ public class Checker extends Circle {
     public int getCol(Checker c) {
     	return c.col;
     }
+    public void setRow(int row) {
+    	this.row = row;
+    }
+    public void setcol(int col) {
+    	this.col = col;
+    }
 }
